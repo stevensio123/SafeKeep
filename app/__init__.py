@@ -14,14 +14,10 @@ from . models import User
 
 
 
-def create_app(config_name=None):
-
-    if not config_name:
-        config_name = 'default'
-    app = Flask(__name__,
-                instance_relative_config=True)
+def create_app(config_name):
+    app = Flask(__name__, instance_relative_config=True)
     app.config.from_object(config[config_name])
-    #config[config_name].init_app(app)
+    config[config_name].init_app(app)
 
     configure_extensions(app)
 
@@ -58,13 +54,3 @@ def configure_extensions(app):
 
     # flask-moment
     moment.init_app(app)
-
-
-# TODO: conmplete config option
-def configure_app(app, config_name=None):
-    # Different ways of configurations i.e local or production
-
-    if config_name:
-        app.config.from_object(config[config_name])
-    else:
-        app.config.from_object(config['default'])
