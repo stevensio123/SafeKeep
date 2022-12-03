@@ -4,14 +4,6 @@ from werkzeug.security import check_password_hash, generate_password_hash
 
 from flask_login import UserMixin
 
-from . import login_manager
-
-
-@login_manager.user_loader
-def load_user(user_id):
-    return User.query.get(int(user_id))
-
-
 # Define a base model for other database tables to inherit
 class Base(db.Model, UserMixin):
 
