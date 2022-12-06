@@ -8,4 +8,4 @@ from ..models import User
 
 @main.route('/', methods=['GET', 'POST'])
 def index():
-    return "<h1> Homepage </h1>"
+    return render_template('index.html')
