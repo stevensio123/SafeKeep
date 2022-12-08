@@ -29,11 +29,13 @@ class User(Base):
 
 
     # New instance instantiation procedure
+    """
     def __init__(self, name, email, password):
 
         self.username = name
         self.email    = email
         self.password = password
+    """
 
     @property
     def password(self):
