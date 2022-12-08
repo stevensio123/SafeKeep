@@ -23,7 +23,7 @@ def login():
                 next = url_for('main.index')
             return redirect(next)
         flash('Invalid Username or Password')
-    return render_template('login.html', form=form)
+    return render_template('auth/login.html', form=form)
 
 
 @auth.route('/logout', methods=['GET', 'POST'])
@@ -43,7 +43,7 @@ def register():
         db.session.commit()
         flash('A confirmation email has been sent to you by email.')
         return redirect(url_for('auth.login'))
-    return render_template('register.html', form=form)
+    return render_template('auth/register.html', form=form)
 
 
         

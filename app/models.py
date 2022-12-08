@@ -25,7 +25,7 @@ class User(Base):
     # Identification Data: email & password
     email    = db.Column(db.String(128),  nullable=False,
                                             unique=True)
-    password = db.Column(db.String(192),  nullable=False)
+    password_hash = db.Column(db.String(192),  nullable=False)
 
 
     # New instance instantiation procedure

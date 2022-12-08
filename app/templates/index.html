@@ -20,6 +20,13 @@
             <ul class="nav navbar-nav">
                 <li><a href="/">Vault</a></li>
             </ul>
+            <ul class="nav navbar-nav navbar-right">
+                {% if current_user.is_authenticated %}
+                <li><a href="{{ url_for('auth.logout') }}">Log Out</a></li>
+                {% else %}
+                <li><a href="{{ url_for('auth.login') }}">Log In</a></li>
+                {% endif %}
+            </ul>
         </div>
     </div>
 </div>
@@ -32,5 +39,6 @@
 <div class="col-md-4">
 </div>
 {% endblock %}
+
 
 
