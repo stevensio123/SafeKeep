@@ -1,9 +1,9 @@
 import functools
 
+
 from flask import Blueprint, flash ,redirect, render_template, request, url_for
 from flask_login import current_user, login_user, logout_user, login_required
 from werkzeug.security import check_password_hash, generate_password_hash
-
 from . import auth
 from .. import db
 from ..forms import LoginForm, RegistrationForm
@@ -44,6 +44,9 @@ def register():
         flash('A confirmation email has been sent to you by email.')
         return redirect(url_for('auth.login'))
     return render_template('register.html', form=form)
+
+
+        
 
 
 
