@@ -3,6 +3,19 @@
 {% block title %}Password Generator{% endblock %}
 
 {% block content %}
+<div class="container">
+    <div class="row">
+      <div class="col align-self-start">
+        One of three columns
+      </div>
+      <div class="col align-self-center">
+        One of three columns
+      </div>
+      <div class="col align-self-end">
+        One of three columns
+      </div>
+    </div>
+  </div>
     <h1>{{ password }}</h1>
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
     Customize password
@@ -13,7 +26,7 @@
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLongTitle">Customize password</h5>
+                            <h5 class="modal-title" id="exampleModalLongTitle">The longer the better!</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -21,13 +34,17 @@
                         <div class="modal-body">
                             <form action="/pgenerator" method="post">
                                 <label for="length" class="form-label">Select length of password</label>
-                                <input type="range" class="form-range" min="0" max="16" id="length">
+                                <input type="range" id="length" name="length" min="8" max="40" value="8" oninput="this.nextElementSibling.value = this.value">
+                                <output>8</output>
+
                                 <button class="btn btn-primary" type="submit">Generate</button>
                             </form>
                         </div>
                 </div>
             </div>
         </div>
+
+
  
 
 {% endblock %}
