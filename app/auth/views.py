@@ -1,4 +1,6 @@
 import functools
+import random
+import string
 
 from flask import Blueprint, flash ,redirect, render_template, request, url_for
 from flask_login import current_user, login_user, logout_user, login_required
@@ -44,6 +46,44 @@ def register():
         flash('A confirmation email has been sent to you by email.')
         return redirect(url_for('auth.login'))
     return render_template('register.html', form=form)
+
+@auth.route('/pgenerator', methods=['GET', 'POST'])
+def pgenerator():
+    if request.method == "POST":
+        #print(string.printable)
+        char_seq = string.printable
+        #print(char_seq)
+        
+        length = int(request.form.get("length"))
+        password = ''
+        
+        if length >= 8 and length <= 16:
+            
+            #generate random chars with "length" amount of times, add chars together to form password
+            for len in range(length):
+                random_char = random.choice(char_seq)
+                password += random_char
+                
+            #reshuffle the list of chars in the generated password 
+            list = list(password)
+            random.shuffle(list)
+            final_password = ''.join(list)
+            return render_template('pgenerator.html',pasword=final_password)
+    
+    else:
+        length = 13
+        password = ''
+        char_seq = string.printable
+        #generate random chars with "length" amount of times, add chars together to form password
+        for len in range(length):
+            random_char = random.choice(char_seq)
+            password += random_char
+            
+        #reshuffle the list of chars in the generated password 
+        list = list(password)
+        random.shuffle(list)
+        final_password = ''.join(list)
+    return render_template('pgenerator.html',pasword=final_password)
 
 
 
