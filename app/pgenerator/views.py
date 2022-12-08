@@ -9,8 +9,8 @@ import string
 def pgenerate():
     
     if request.method == "POST":
-        length = request.form.get('length', type=int)
-        print(length)
+        length = request.form.get('length')
+        
         if length >= 8 and length <= 16:
           
             return render_template('pgenerator.html',password=pgen(length))
