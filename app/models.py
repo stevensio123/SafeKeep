@@ -1,4 +1,5 @@
-# Import the database object (db) from the main application module
+from itsdangerous import URLSafeTimedSerializer as Serializer
+from flask import current_app
 from app import db
 from werkzeug.security import check_password_hash, generate_password_hash
 
@@ -20,12 +21,32 @@ class User(Base):
     __tablename__ = 'users'
 
     # User Name
-    name = db.Column(db.String(64), unique=True, index=True)
+    username = db.Column(db.String(64), unique=True, index=True)
 
     # Identification Data: email & password
     email    = db.Column(db.String(128),  nullable=False,
                                             unique=True)
     password_hash = db.Column(db.String(192),  nullable=False)
+
+    # Confirmation status: default=False
+    confirmed = db.Column(db.Boolean, default=False)
+
+    def generate_confirmation_token(self):
+        s = Serializer(current_app.config['SECRET_KEY'])
+        return s.dumps({'confirm': self.id})
+        
+    def confirm(self, token, experation=3600):
+        s = Serializer(current_app.config['SECRET_KEY'] )
+        try:
+            data = s.loads(token, max_age=experation)
+        except:
+            return False
+        if data.get('confirm') != self.id:
+            return False
+        self.confirmed = True
+        db.session.add(self)
+        return True
+
 
 
     # New instance instantiation procedure
@@ -50,4 +71,4 @@ class User(Base):
 
 
     def __repr__(self):
-        return '<User %r>' % (self.name)  
+        return '<User %r>' % (self.username)  
