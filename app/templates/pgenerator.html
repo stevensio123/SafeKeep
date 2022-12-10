@@ -25,15 +25,15 @@
                                 <input type="range" id="length" name="length" min="8" max="40" value="8" oninput="this.nextElementSibling.value = this.value">
                                 <output>8</output>
                                 <div class="form-check form-switch">
-                                  <input class="form-check-input" type="checkbox" id="asciiF" name="asciiF" onclick="check(this)" checked>
+                                  <input class="form-check-input" type="checkbox" id="asciiF" name="asciiF" onclick="check()" checked>
                                   <label class="form-check-label" for="asciiF">Include Alphabet letters</label>
                                 </div>
                                 <div class="form-check form-switch">
-                                  <input class="form-check-input" type="checkbox" id="lowerF" name="lowerF" checked>
+                                  <input class="form-check-input" type="checkbox" id="lowerF" name="lowerF" onclick="check()" checked>
                                   <label class="form-check-label" for="lowerF">Include lowercase Characters</label>
                                 </div>
                                 <div class="form-check form-switch">
-                                  <input class="form-check-input" type="checkbox" id="upperF" name="upperF" checked>
+                                  <input class="form-check-input" type="checkbox" id="upperF" name="upperF" onclick="check()" checked>
                                   <label class="form-check-label" for="upperF">Include uppercase Characters</label>
                                 </div>
 
@@ -52,18 +52,29 @@
             </div>
         </div>
 <script type="text/javascript">
- function check(ascii)
+ function check()
  {
-
+    ascii = document.getElementById("asciiF")  
+    lowerF = document.getElementById("lowerF")  
+    upperF = document.getElementById("upperF")
     if (ascii.checked == 0)
     {
-      document.getElementById("lowerF").disabled = true;
-      document.getElementById("upperF").disabled = true;
+      lowerF.disabled = true;
+      upperF.disabled = true;
     }
     else 
     {
-      document.getElementById("upperF").disabled = false;
-      document.getElementById("lowerF").disabled = false;
+      lowerF.disabled = false;
+      upperF.disabled = false;
+    }
+    if (upperF.checked == 0 && lowerF.checked == 0)
+    {
+      ascii.disabled = true;
+    }
+    else
+    {
+      ascii.disabled = false;
+
     }
  
 
