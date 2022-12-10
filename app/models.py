@@ -5,6 +5,7 @@ from werkzeug.security import check_password_hash, generate_password_hash
 
 from flask_login import UserMixin
 
+
 # Define a base model for other database tables to inherit
 class Base(db.Model, UserMixin):
 
@@ -14,6 +15,14 @@ class Base(db.Model, UserMixin):
     date_created  = db.Column(db.DateTime,  default=db.func.current_timestamp())
     date_modified = db.Column(db.DateTime,  default=db.func.current_timestamp(),
                                            onupdate=db.func.current_timestamp())
+
+class Credential(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    website = db.Column(db.String(120), nullable=False)
+    username = db.Column(db.String(80), nullable=False)
+    password = db.Column(db.String(120), nullable=False)
+
 
 # Define a User model
 class User(Base):
@@ -27,9 +36,6 @@ class User(Base):
     email    = db.Column(db.String(128),  nullable=False,
                                             unique=True)
     password_hash = db.Column(db.String(192),  nullable=False)
-
-    # Confirmation status: default=False
-    confirmed = db.Column(db.Boolean, default=False)
 
     def generate_confirmation_token(self):
         s = Serializer(current_app.config['SECRET_KEY'])
@@ -47,16 +53,6 @@ class User(Base):
         db.session.add(self)
         return True
 
-
-
-    # New instance instantiation procedure
-    """
-    def __init__(self, name, email, password):
-
-        self.username = name
-        self.email    = email
-        self.password = password
-    """
 
     @property
     def password(self):

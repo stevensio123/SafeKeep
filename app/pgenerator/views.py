@@ -5,8 +5,7 @@ import random
 
 
 @pgenerator.route('/pgenerator', methods=['GET', 'POST'])
-def pgenerate():
-    
+def pgenerate(): 
     if request.method == "POST":
         length = int(request.form.get("length"))
         

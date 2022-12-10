@@ -1,4 +1,3 @@
-
 from flask import Blueprint
 
 pgenerator = Blueprint('pgenerator', __name__)
