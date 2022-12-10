@@ -35,10 +35,18 @@ def create_app(config_name):
     def create_tables():
         db.create_all()
         print('Created Database')
-        user = User(username='admin', password='admin', email='admin@example.com')
+
+    
+    def register_user():
+        user = User(username='admin', password='admin')
         db.session.add(user)
         db.session.commit()
-        print('Added new user')
+
+    # check if the user table is empty and register a new user if needed
+    @app.before_first_request
+    def check_user_table():
+        if User.query.count() == 0:
+            register_user()
 
     return app
 
@@ -61,3 +69,14 @@ def configure_extensions(app):
 
     # flask-moment
     moment.init_app(app)
+
+
+def register_user():
+    user = User(username='admin', password='admin')
+    db.session.add(user)
+    db.session.commit()
+
+# check if the user table is empty and register a new user if needed
+def check_user_table():
+    if User.query.count() == 0:
+        register_user()
