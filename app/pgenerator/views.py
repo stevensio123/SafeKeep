@@ -5,8 +5,7 @@ import random
 import string
 
 @pgenerator.route('/pgenerator', methods=['GET', 'POST'])
-def pgenerate():
-    
+def pgenerate(): 
     #default value of Filters
     asciiFilter = False
     lowerFilter = False
