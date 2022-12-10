@@ -1,32 +1,67 @@
 {% extends "layout.html" %}
 
 {% block title %}Password Generator{% endblock %}
+{% block navbar %}
+<div class="navbar navbar-inverse" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle"
+            data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Home</a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="/">Vault</a></li>
+            </ul>
+            <ul class="nav navbar-nav">
+                <li><a href="#">Generate Password</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                {% if current_user.is_authenticated %}
+                <li><a href="{{ url_for('auth.logout') }}">Log Out</a></li>
+                {% else %}
+                <li><a href="{{ url_for('auth.login') }}">Log In</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}
 
 {% block content %}
 <div class="container">
-    <div class="row">
-      <div class="col align-self-start">
-        One of three columns
+
+  <div class="col text-center">
+
+    <div class="form-inline">
+
+      <div class="form-group mx-sm-3 mb-2">
+       
+        <h2  class="fw-semibold text-secondary">Password</h2>
+        <input type="text" class="form-control" id="password" value="{{ password }}">
+        <button type="button" class="btn btn-outline-info" onclick="copy()" >Copy</button>
+
       </div>
-      <div class="col align-self-center">
-        One of three columns
-      </div>
-      <div class="col align-self-end">
-        One of three columns
-      </div>
+    </br>
+    </br>
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+        Customize password
+      </button>
     </div>
-  </div>
-    <h1>{{ password }}</h1>
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
-    Customize password
-    </button>
         
+
+  </div> 
         <!-- Modal -->
         <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLongTitle">The longer the better!</h5>
+                            <h3 class="modal-title" id="exampleModalLongTitle">Customize Password</h3>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -34,17 +69,100 @@
                         <div class="modal-body">
                             <form action="/pgenerator" method="post">
                                 <label for="length" class="form-label">Select length of password</label>
-                                <input type="range" id="length" name="length" min="8" max="40" value="8" oninput="this.nextElementSibling.value = this.value">
-                                <output>8</output>
+                                <input type="range" id="length" name="length" min="8" max="40" value="13" oninput="this.nextElementSibling.value = this.value">
+                                <output>13</output>
+                                <div class="form-check form-switch">
+                                  <input class="form-check-input" type="checkbox" id="asciiF" name="asciiF" onclick="check()" checked>
+                                  <label class="form-check-label" for="asciiF">Include Alphabet letters</label>
+                                </div>
+                                <div class="form-check form-switch">
+                                  <input class="form-check-input" type="checkbox" id="lowerF" name="lowerF" onclick="check()" checked>
+                                  <label class="form-check-label" for="lowerF">Include lowercase Characters</label>
+                                </div>
+                                <div class="form-check form-switch">
+                                  <input class="form-check-input" type="checkbox" id="upperF" name="upperF" onclick="check()" checked>
+                                  <label class="form-check-label" for="upperF">Include uppercase Characters</label>
+                                </div>
 
-                                <button class="btn btn-primary" type="submit">Generate</button>
+                                <div class="form-check form-switch">
+                                  <input class="form-check-input" type="checkbox" id="digitsF" name="digitsF" onclick="check()" checked>
+                                  <label class="form-check-label" for="digitsF">Include numbers</label>
+                                </div>
+                                <div class="form-check form-switch">
+                                  <input class="form-check-input" type="checkbox" id="puncF" name="puncF" onclick="check()" checked>
+                                  <label class="form-check-label" for="puncF">Include Punctuations</label>
+                                </div>
+                                <button class="btn btn-primary" id="submit" type="submit">Generate</button>
+                              <br>
+                              <p class="fw-semibold text-danger" id="hidden"></p>
                             </form>
                         </div>
                 </div>
             </div>
         </div>
-
-
+  </div>
+</div>
+<script type="text/javascript">
+  function check()
+  {
+     ascii = document.getElementById("asciiF");
+     lowerF = document.getElementById("lowerF");  
+     upperF = document.getElementById("upperF");
+     digitsF = document.getElementById("digitsF");
+     puncF = document.getElementById("puncF");
+     submit = document.getElementById("submit");
  
+     if (ascii.checked == 0)
+     {
+       lowerF.disabled = true;
+       upperF.disabled = true;
+     }
+     else 
+     {
+       lowerF.disabled = false;
+       upperF.disabled = false;
+     }
+     if (upperF.checked == 0 && lowerF.checked == 0)
+     {
+       ascii.disabled = true;
+ 
+     }
+     else
+     {
+       ascii.disabled = false;
+ 
+     }
+     letters = true;
+     if (ascii.disabled == true || ascii.checked == 0)
+     {
+       letters = false;
+     }
+     var all = letters + digitsF.checked + puncF.checked;
+     var alert = document.getElementById("hidden");
+     if (all == 0)
+     {
+       submit.disabled = true;
+       alert.innerHTML += "Must include atleast one type of characters";
+ 
+     }
+     else
+     {
+       submit.disabled = false;
+       alert.innerHTML = "";
+     }
+ }
+ function copy() {
+  var copyText = document.getElementById("password");
+  copyText.select();
+  copyText.setSelectionRange(0, 99999);  
+  navigator.clipboard.writeText(copyText.value);
+  
+  var tooltip = document.getElementById("myTooltip");
+  tooltip.innerHTML = "Copied: " + copyText.value;
+}
+
+ </script>
 
 {% endblock %}
+
+
