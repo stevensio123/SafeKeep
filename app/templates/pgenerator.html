@@ -38,14 +38,16 @@
                                 </div>
 
                                 <div class="form-check form-switch">
-                                  <input class="form-check-input" type="checkbox" id="digitsF" name="digitsF" checked>
+                                  <input class="form-check-input" type="checkbox" id="digitsF" name="digitsF" onclick="check()" checked>
                                   <label class="form-check-label" for="digitsF">Include numbers</label>
                                 </div>
                                 <div class="form-check form-switch">
-                                  <input class="form-check-input" type="checkbox" id="puncF" name="puncF" checked>
+                                  <input class="form-check-input" type="checkbox" id="puncF" name="puncF" onclick="check()" checked>
                                   <label class="form-check-label" for="puncF">Include Punctuations</label>
                                 </div>
-                                <button class="btn btn-primary" type="submit">Generate</button>
+                                <button class="btn btn-primary" id="submit" type="submit">Generate</button>
+                              <br>
+                              <p class="fw-semibold text-danger" id="hidden"></p>
                             </form>
                         </div>
                 </div>
@@ -54,9 +56,13 @@
 <script type="text/javascript">
  function check()
  {
-    ascii = document.getElementById("asciiF")  
-    lowerF = document.getElementById("lowerF")  
-    upperF = document.getElementById("upperF")
+    ascii = document.getElementById("asciiF");
+    lowerF = document.getElementById("lowerF");  
+    upperF = document.getElementById("upperF");
+    digitsF = document.getElementById("digitsF");
+    puncF = document.getElementById("puncF");
+    submit = document.getElementById("submit");
+
     if (ascii.checked == 0)
     {
       lowerF.disabled = true;
@@ -70,12 +76,32 @@
     if (upperF.checked == 0 && lowerF.checked == 0)
     {
       ascii.disabled = true;
+
     }
     else
     {
       ascii.disabled = false;
 
     }
+    letters = true;
+    if (ascii.disabled == true || ascii.checked == 0)
+    {
+      letters = false;
+    }
+    var all = letters + digitsF.checked + puncF.checked;
+    var alert = document.getElementById("hidden");
+    if (all == 0)
+    {
+      submit.disabled = true;
+      alert.innerHTML += "Must include atleast one type of characters";
+
+    }
+    else
+    {
+      submit.disabled = false;
+      alert.innerHTML = "";
+    }
+  
  
 
 }
