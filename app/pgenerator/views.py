@@ -44,7 +44,7 @@ def pgen(length,asciiFilter,lowerFilter,upperFilter,puncFilter,digitsFilter):
  
     password =''
     #All usable characters
-    chars = string.ascii_letters + string.hexdigits + string.punctuation
+    chars = string.ascii_letters + string.digits + "!@#$%^&*?"
     #Add selected filters into the filter list:
     filter = ''
     if asciiFilter == True:
@@ -54,7 +54,7 @@ def pgen(length,asciiFilter,lowerFilter,upperFilter,puncFilter,digitsFilter):
     if upperFilter == True:
         filter += string.ascii_uppercase
     if puncFilter == True:
-        filter += string.punctuation
+        filter += "!@#$%^&*?"
     if digitsFilter == True:
         filter += string.digits
     
