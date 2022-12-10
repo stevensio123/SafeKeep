@@ -35,6 +35,10 @@ def create_app(config_name):
     def create_tables():
         db.create_all()
         print('Created Database')
+        user = User(username='admin', password='admin', email='admin@example.com')
+        db.session.add(user)
+        db.session.commit()
+        print('Added new user')
 
     return app
 

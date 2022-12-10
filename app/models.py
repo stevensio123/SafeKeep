@@ -17,8 +17,9 @@ class Base(db.Model, UserMixin):
                                            onupdate=db.func.current_timestamp())
 
 class Credential(db.Model):
+    __tablename__ = 'credentials'
     id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     website = db.Column(db.String(120), nullable=False)
     username = db.Column(db.String(80), nullable=False)
     password = db.Column(db.String(120), nullable=False)
@@ -36,6 +37,8 @@ class User(Base):
     email    = db.Column(db.String(128),  nullable=False,
                                             unique=True)
     password_hash = db.Column(db.String(192),  nullable=False)
+
+    credentials = db.relationship('Credential', backref='user', lazy='dynamic')
 
     def generate_confirmation_token(self):
         s = Serializer(current_app.config['SECRET_KEY'])
