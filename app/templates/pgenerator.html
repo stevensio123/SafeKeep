@@ -3,19 +3,7 @@
 {% block title %}Password Generator{% endblock %}
 
 {% block content %}
-<div class="container">
-    <div class="row">
-      <div class="col align-self-start">
-        One of three columns
-      </div>
-      <div class="col align-self-center">
-        One of three columns
-      </div>
-      <div class="col align-self-end">
-        One of three columns
-      </div>
-    </div>
-  </div>
+
     <h1>{{ password }}</h1>
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
     Customize password
@@ -36,14 +24,53 @@
                                 <label for="length" class="form-label">Select length of password</label>
                                 <input type="range" id="length" name="length" min="8" max="40" value="8" oninput="this.nextElementSibling.value = this.value">
                                 <output>8</output>
+                                <div class="form-check form-switch">
+                                  <input class="form-check-input" type="checkbox" id="asciiF" name="asciiF" onclick="check(this)" checked>
+                                  <label class="form-check-label" for="asciiF">Include Alphabet letters</label>
+                                </div>
+                                <div class="form-check form-switch">
+                                  <input class="form-check-input" type="checkbox" id="lowerF" name="lowerF" checked>
+                                  <label class="form-check-label" for="lowerF">Include lowercase Characters</label>
+                                </div>
+                                <div class="form-check form-switch">
+                                  <input class="form-check-input" type="checkbox" id="upperF" name="upperF" checked>
+                                  <label class="form-check-label" for="upperF">Include uppercase Characters</label>
+                                </div>
 
+                                <div class="form-check form-switch">
+                                  <input class="form-check-input" type="checkbox" id="digitsF" name="digitsF" checked>
+                                  <label class="form-check-label" for="digitsF">Include numbers</label>
+                                </div>
+                                <div class="form-check form-switch">
+                                  <input class="form-check-input" type="checkbox" id="puncF" name="puncF" checked>
+                                  <label class="form-check-label" for="puncF">Include Punctuations</label>
+                                </div>
                                 <button class="btn btn-primary" type="submit">Generate</button>
                             </form>
                         </div>
                 </div>
             </div>
         </div>
+<script type="text/javascript">
+ function check(ascii)
+ {
 
+    if (ascii.checked == 0)
+    {
+      document.getElementById("lowerF").disabled = true;
+      document.getElementById("upperF").disabled = true;
+    }
+    else 
+    {
+      document.getElementById("upperF").disabled = false;
+      document.getElementById("lowerF").disabled = false;
+    }
+ 
+
+}
+ 
+
+</script>
 
  
 
