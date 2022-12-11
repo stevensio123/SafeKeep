@@ -41,7 +41,7 @@ def create_app(config_name):
 
     
     def register_user():
-        user = User(username='admin', password='admin')
+        user = User(username='admin', password='admin', email='example@email.com')
         db.session.add(user)
         db.session.commit()
 
