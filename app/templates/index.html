@@ -1,44 +1,23 @@
 {% extends "layout.html" %}
 {% import "bootstrap/wtf.html" as wtf %}
 
-{% block title %}Flasky - Homepage{% endblock %}
-
-{% block navbar %}
-<div class="navbar navbar-inverse" role="navigation">
-    <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle"
-            data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="/">Home</a>
-        </div>
-        <div class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
-                <li><a href="{{ url_for('vault.view_credentials') }}">Vault</a></li>
-                <li><a href="{{ url_for('pgenerator.pgenerate') }}">Generate Password</a></li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                {% if current_user.is_authenticated %}
-                <li><a href="{{ url_for('auth.logout') }}">Log Out</a></li>
-                {% else %}
-                <li><a href="{{ url_for('auth.login') }}">Log In</a></li>
-                {% endif %}
-            </ul>
-        </div>
-    </div>
-</div>
-{% endblock %}
+{% block title %}Password Generator - Homepage{% endblock %}
 
 {% block content %}
-<div class="page-header">
-    <p>Homepage</p>
-</div>
-<div class="col-md-4">
-</div>
+    <div class="container col-xxl-8 px-4 py-5">
+        <h1 class="display-4 fw-bold">Password Manager and Generator</h1>
+        <div class="col-lg-6 mx-auto">
+            <p class="lead mb-4">
+                The buttons dont do anything yet. Make them redirect to vault/password manager.
+                Think of some other stuff we can have on the homepage. Consider adding a footer, this
+                should be done in "layout.html".
+            </p>
+            <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mb-5">
+                <button type="button" class="btn btn-primary btn-lg px-4 me-sm-3">Valut</button>
+                <button type="button" class="btn btn-primary btn-lg px-4 me-sm-3">Password Generator</button>
+            </div>
+        </div>
+    </div>
 {% endblock %}
 
 
