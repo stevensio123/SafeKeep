@@ -31,6 +31,9 @@ def create_app(config_name):
     from .pgenerator import pgenerator as pgenerator_blueprint
     app.register_blueprint(pgenerator_blueprint)
 
+    from .vault import vault as vault_blueprint
+    app.register_blueprint(vault_blueprint)
+
     @app.before_first_request
     def create_tables():
         db.create_all()
