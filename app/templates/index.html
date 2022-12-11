@@ -18,7 +18,7 @@
         </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li><a href="/">Vault</a></li>
+                <li><a href="{{ url_for('vault.view_credentials') }}">Vault</a></li>
                 <li><a href="{{ url_for('pgenerator.pgenerate') }}">Generate Password</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
