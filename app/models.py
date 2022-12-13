@@ -40,10 +40,14 @@ class User(Base):
 
     credentials = db.relationship('Credential', backref='user', lazy='dynamic')
 
+    """
+    Not used: This code will be used to generate confirmation after registration
     def generate_confirmation_token(self):
         s = Serializer(current_app.config['SECRET_KEY'])
         return s.dumps({'confirm': self.id})
+    """
         
+    """
     def confirm(self, token, experation=3600):
         s = Serializer(current_app.config['SECRET_KEY'] )
         try:
@@ -55,6 +59,7 @@ class User(Base):
         self.confirmed = True
         db.session.add(self)
         return True
+    """
 
 
     @property
