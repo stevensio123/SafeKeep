@@ -4,6 +4,8 @@
 {% block title %}Password manager - Login{% endblock %}
 
 {% block content %}
+<body>
+<div class="container-fluid" style="height:100vh;">
 <div class="page-header">
     <h1>Login</h1>
 </div>
@@ -12,4 +14,8 @@
     <br>
     <p>New user? <a href="{{ url_for('auth.register') }}">Click here to register</a>.</p>
 </div>
+
+</div>
+{% include "footer.html" %}
+</body>
 {% endblock %}

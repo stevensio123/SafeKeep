@@ -3,7 +3,7 @@
 {% block title %}Password Generator{% endblock %}
 
 {% block content %}
-<div class="container">
+<div class="container-fluid" style="height:100vh;">
 
   <div class="col text-center">
 
@@ -12,15 +12,26 @@
       <div class="form-group mx-sm-3 mb-2">
        
         <h2  class="fw-semibold text-secondary">Password</h2>
+        <div class="row">
+          <div class="col-md-6">
         <input type="text" class="form-control" id="password" value="{{ password }}">
-        <button type="button" class="btn btn-outline-info" onclick="copy()" >Copy</button>
-
+          </div>
+          <div class="col-md-2 col-md-offset-2">
+            <button type="button" class="btn btn-outline-info" onclick="copy()" >Copy</button>
+          </div>
+        </div>
+        <div class="row">
+        </br>
+          <div class="col text-center">
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+                Customize password
+            </button>
+          </div>
+        </div>
       </div>
     </br>
     </br>
-      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
-        Customize password
-      </button>
+ 
     </div>
         
 
@@ -71,6 +82,7 @@
         </div>
   </div>
 </div>
+{% include "footer.html" %}
 <script type="text/javascript">
   function check()
   {
