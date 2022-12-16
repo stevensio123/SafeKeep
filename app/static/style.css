@@ -43,7 +43,7 @@ body {
   
   @media screen and (max-width: 810px) {
     #section1, #section2, #section3, #section4, #section5  {
-      margin-left: 150px; 
+      
     }
   }
   .footer {  
