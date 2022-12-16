@@ -80,5 +80,4 @@ def view_credentials():
 
     # Get hashed master password
     master_password = user.password_hash
-    print(master_password)
     return render_template('vault/credentials.html', credentials=credentials, master_password=master_password)
