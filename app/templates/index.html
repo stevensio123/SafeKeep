@@ -1,24 +1,104 @@
 {% extends "layout.html" %}
+
 {% import "bootstrap/wtf.html" as wtf %}
 
 {% block title %}Password Generator - Homepage{% endblock %}
 
+
 {% block content %}
-    <div class="container col-xxl-8 px-4 py-5">
-        <h1 class="display-4 fw-bold">Password Manager and Generator</h1>
-        <div class="col-lg-6 mx-auto">
-            <p class="lead mb-4">
-                The buttons dont do anything yet. Make them redirect to vault/password manager.
-                Think of some other stuff we can have on the homepage. Consider adding a footer, this
-                should be done in "layout.html".
-            </p>
-            <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mb-5">
-                <button type="button" class="btn btn-primary btn-lg px-4 me-sm-3">Valut</button>
-                <button type="button" class="btn btn-primary btn-lg px-4 me-sm-3">Password Generator</button>
+<body data-spy="scroll" data-target="#myScrollspy" data-offset="61">
+
+
+    <div class="container-fluid" style="background-color:#2196F3;color:#fff;padding:20px;">
+        <div class="container col-xxl-8 px-4 py-5">
+            <h1 class="display-4 fw-bold">Password Manager and Generator</h1>
+            <div class="col-lg-6 mx-auto">
+                <p class="lead mb-4">
+                    Store and manage your Password Securely.
+                </p>
+            </br>
+                <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mb-5">
+                  <div style="padding:5px;">
+                    <a role="button" class="btn btn-primary btn-lg px-4 me-sm-3" href="{{ url_for('vault.view_credentials') }}">Vault</a>
+                  </div> 
+                  <div style="padding:5px;">
+                    <a role="button" class="btn btn-primary btn-lg px-4 me-sm-3" href="{{ url_for('pgenerator.pgenerate') }}">Password Generator</a>
+                  </div>
+                  </div>
             </div>
         </div>
     </div>
-{% endblock %}
+  
+    <div class="row">
+        <div class="col-lg-3 hidden-md hidden-sm hidden-xs">
+          
+            <nav id="myScrollspy" >
+              <ul class="nav nav-pills nav-stacked affix-top" data-spy="affix" data-offset-top="250">
+                    <li><a href="#section1"><h3>Introduction</h3></a></li>
+                    <li><a href="#section2"><h4>How does it work?</h4></a></li>
+                    <li><a href="#section3">Generate Password</a></li>
+                    <li><a href="#section4">Storing Password</a></li>
+                    <li><a href="#section5">Removing Password</a></li>
+              </ul>
+            </nav>
+      
+        </div>
+        
+        <div class="col-lg-9">
+          <div id="section1">    
+          
+            <h1>Intro to Password Managers</h1>
+            <p>A Password Manager securely store your Passwords in a protected "Vault". Users would no longer need to remember long and complex passwords as it could be accessed after opening this "Vault".</p>
+            <p>To use a vault, you would have to remember only one Username and Password to login.
+          </div>
+          <div id="section2"> 
+            <h1>How does it work?</h1>
+            <p></p>
+            <p>..</p>
+            <p>..</p>
+            <p>..</p>
+            <p>..</p>
+          </div>        
+          <div id="section3">
+            <h1>Section 3</h1>
+            <p>...</p>
+            <p>..</p>
+            <p>..</p>
+            <p>..</p>
+            <p>..</p>
+          </div>
+          <div id="section4">
+            <h1>Section 4</h1>
+            <p>...</p>
+            <p>..</p>
+            <p>..</p>
+            <p>..</p>
+            <p>..</p>
+          </div>      
+          <div id="section5">
+            <h1>Section 5</h1>
+            <p>..</p>
+            <p>..</p>
+            <p>..</p>
+            <p>..</p>
+            <p>..</p>
+            <p>..</p>
+            <p>..</p>
+            <p>..</p>
+       
+          </div>
+        </div>
+      </div>
+    
+    
+   
+<div>
+{% include "footer.html" %}
+
+</div>
+
+</body>
+ {% endblock %}
 
 
 

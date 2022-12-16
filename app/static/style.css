@@ -21,3 +21,95 @@ nav .navbar-brand .green
 {
     color: #2e944b;
 }
+
+
+body {
+    top: 51px;
+    position: relative;
+  }
+  .affix {
+    top: 61px;
+    z-index: 9999 !important;
+  }
+  div.col-sm-9 div {
+    height: 350px;
+    font-size: 28px;
+  }
+  #section1 {color: #fff; background-color: #161616; padding: 20px;}
+  #section2 {color: #fff; background-color: #161616; padding: 20px;}
+  #section3 {color: #fff; background-color: #161616; padding: 20px;}
+  #section4 {color: #fff; background-color: #161616; padding: 20px;}
+  #section5 {color: #fff; background-color: #161616; padding: 20px;}
+  
+  @media screen and (max-width: 810px) {
+    #section1, #section2, #section3, #section4, #section5  {
+      
+    }
+  }
+  .footer {  
+    padding: 60px 0;  
+    width: 100%;  
+    background: #001574;  
+    color: #fff;  
+    }  
+    .footer-title {  
+    position: relative;  
+    color: #fff;  
+    font-size: 24px;  
+    font-weight: 600;  
+    margin-top: 5px;  
+    margin-bottom: 20px;  
+    }  
+    .footer-title:after {  
+    position: absolute;  
+    content: '';  
+    left: 0;  
+    bottom: 0;  
+    width: 30px;  
+    height: 4px;  
+    background: #ff304d;  
+    }  
+    .footer-links a {  
+    padding: 10px 0;  
+    color: #fff;  
+    display: block;  
+    transition: color 0.5s ease-in-out;  
+    text-decoration: none;  
+    }  
+    .footer-links a:hover {  
+    color: #ff304d;  
+    }  
+    .footer-social-links li {  
+    display: inline-block;  
+    }  
+    .footer-social-links a {  
+    width: 40px;  
+    height: 40px;  
+    font-size: 16px;  
+    float: left;  
+    margin-right: 10px;  
+    padding: 10px;  
+    border-radius: 50px;  
+    text-align: center;  
+    color: #fff;  
+    line-height: 1;  
+    -webkit-transition: background 0.3s ease-in-out;  
+    -moz-transition: background 0.3s ease-in-out;  
+    transition: background 0.3s ease-in-out;  
+    background: #3B008D;  
+    }  
+    .footer-social-links a:hover {  
+    background: #ff304d;  
+    }  
+    .footer-bottom {  
+    width: 100%;  
+    padding: 25px 0;  
+    text-align: center;  
+    color: #fff;  
+    background: rgb(9, 95, 234);  
+    }  
+
+    .col-centered{
+      float: none;
+      margin: 0 auto;
+  }
