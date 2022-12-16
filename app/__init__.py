@@ -50,6 +50,22 @@ def create_app(config_name):
     def check_user_table():
         if User.query.count() == 0:
             register_user()
+            
+    from .encryption import generate_key, SALT
+    from cryptography.fernet import Fernet
+    @app.context_processor
+    def utility_processor():
+        def decrypt_credential(password: str, master_password) -> str:
+            # convert password to byte
+            # password = password.decode('utf-8')
+            encrypt_key = generate_key(master_password, salt=SALT)
+
+            # Use the key to encrypt the password
+            fernet = Fernet(encrypt_key)
+            decrypted_password = fernet.decrypt(password)
+
+            return decrypted_password
+        return dict(decrypt_credential=decrypt_credential)
 
     return app
 
