@@ -9,7 +9,7 @@ from wtforms.validators import InputRequired, Length
 from . import vault
 from . forms import CredentialForm
 from .. import db
-from ..models import Credential
+from ..models import Credential, User
 
 
 
@@ -29,6 +29,7 @@ def add_credential():
         db.session.commit()
         flash('Credential added successfully')
         return redirect(url_for('main.index'))
+    
     return render_template('vault/add_credential.html', form=form)
 
 
@@ -59,7 +60,7 @@ def edit_credential(credential_id):
     form = CredentialForm(
         website=credential.website,
         username=credential.username,
-        password=credential.password
+        password=credential.encrypted_password
     )
     if form.validate_on_submit():
         # update the credential and save it to the database
@@ -76,4 +77,8 @@ def edit_credential(credential_id):
 @login_required
 def view_credentials():
     credentials = Credential.query.filter_by(user_id=current_user.id).all()
-    return render_template('vault/credentials.html', credentials=credentials)
+    user = User.query.filter_by(id=current_user.id).first()
+
+    # Get hashed master password
+    master_password = user.password_hash
+    return render_template('vault/credentials.html', credentials=credentials, master_password=master_password)
