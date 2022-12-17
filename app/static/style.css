@@ -29,6 +29,7 @@ body {
   }
   .affix {
     top: 61px;
+   
     z-index: 9999 !important;
   }
   div.col-sm-9 div {
@@ -113,3 +114,5 @@ body {
       float: none;
       margin: 0 auto;
   }
+
+

@@ -29,6 +29,7 @@ def add_credential():
         db.session.commit()
         flash('Credential added successfully')
         return redirect(url_for('main.index'))
+    
     return render_template('vault/add_credential.html', form=form)
 
 
