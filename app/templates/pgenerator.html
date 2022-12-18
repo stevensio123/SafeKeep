@@ -3,40 +3,39 @@
 {% block title %}Password Generator{% endblock %}
 
 {% block content %}
-<div class="container-fluid" style="height:100vh; background:url(static/background/pipes.png)">
+<div class="container-fluid" style="height:100vh; padding:10px;">
 
-  <div class="col text-center" >
+  <div class="row">
+    <div class="col-md-4 col-centered">
+      <div class="container-fluid panel panel-default" style="padding:30px;">
 
-    <div class="form-inline">
+          <div class="form-group">
+              <h2  class="fw-semibold text-secondary text-center">Password</h2>
+              <div class="row"style="padding:10px;">
+                <div class="col">
+                  <input type="text" class="form-control" id="password" value="{{ password }}">
+                </div>
+              </div>
+              <div class="row"style="padding:10px;">
+                
+                  <button type="button" class="btn btn-outline-info" onclick="copy()" >Copy</button>
+                
+             
+                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+                    Customize password
+                  </button>
+             
+            
 
-      <div class="form-group mx-auto">
-       
-        <h2  class="fw-semibold text-secondary">Password</h2>
-          <div class="row">
-            <div class="col-mx-auto" style="padding:5px;">
-              <input type="text" class="form-control" id="password" value="{{ password }}">
-            </div>
           </div>
-          <div class="row">
-            <div class="col-xs-4" style="padding:2px;">
-              <button type="button" class="btn btn-outline-info" onclick="copy()" >Copy</button>
-            </div>
-            <div class="col-xs-8" style="padding:2px;">
-              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
-                Customize password
-              </button>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </br>
-    </br>
- 
-    </div>
         
+      </div>
+    </div>
+  </div>
 
-  </div> 
+ 
+</div>
+        
         <!-- Modal -->
         <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
