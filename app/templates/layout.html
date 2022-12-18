@@ -9,10 +9,10 @@
 {% block navbar %}
 <div>
     <div class="container-fluid">
-        <nav class="navbar navbar-inverse navbar-fixed-top" style="background:url(static/background/micro_carbon.png);" role="navigation">
+        <nav class="navbar navbar-inverse navbar-fixed-top" style="background:url({{ url_for('static', filename='background/micro_carbon.png') }});" role="navigation">
             <div class="container">
                 <div class="navbar-header">
-                    <button type="button" class="navbar-toggle"
+                    <button type="button" class="navbar-toggle"style="margin-right:10px;"
                     data-toggle="collapse" data-target=".navbar-collapse">
                         <span class="sr-only">Toggle navigation</span>
                         <span class="icon-bar"></span>
