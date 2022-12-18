@@ -29,8 +29,6 @@ body {
   }
   .affix {
     top: 61px;
-   
-    z-index: 9999 !important;
   }
   div.col-sm-9 div {
     height: 350px;
@@ -51,10 +49,11 @@ body {
     padding: 60px 0;  
     width: 100%;  
     background: #001574;  
-    color: #fff;  
+    color: #fff;
+     
     }  
     .footer-title {  
-    position: relative;  
+     
     color: #fff;  
     font-size: 24px;  
     font-weight: 600;  
@@ -62,7 +61,7 @@ body {
     margin-bottom: 20px;  
     }  
     .footer-title:after {  
-    position: absolute;  
+     
     content: '';  
     left: 0;  
     bottom: 0;  

@@ -9,7 +9,7 @@
 <body data-spy="scroll" data-target="#myScrollspy" data-offset="61">
 
 
-    <div class="container-fluid" style="background-color:#2196F3;color:#fff;padding:20px;">
+    <div class="container-fluid" style="color:dark-gray;padding:20px;background:url(static/background/pipes.png);">
         <div class="container col-xxl-8 px-4 py-5">
             <h1 class="display-4 fw-bold">Password Manager and Generator</h1>
             <div class="col-lg-6 mx-auto">
@@ -32,9 +32,9 @@
         </div>
     </div>
   
-    <div class="row">
+    <div class="row" style="color:black;padding:20px;background:#D3D3D3;">
 
-        <div class="col-lg-3 hidden-md hidden-sm hidden-xs">
+        <div class="col-lg-2 hidden-md hidden-sm hidden-xs" >
             <nav id="myScrollspy" >
               <ul class="nav nav-pills nav-stacked affix-top" data-spy="affix" data-offset-top="250">
                     <li><a href="#section1"><h3>Introduction</h3></a></li>
@@ -69,16 +69,37 @@
             <p>
               Generates strong, unique passwords for online accounts: Pgenerator can generate random, secure passwords that meet the requirements of a particular online service or account. This helps users avoid using weak or reused passwords, which are more vulnerable to being hacked.
             </p>
+            <div class="text-center">
+            <div class="row">
+              <div class="col-xs-6 col-md-2 img-fluid" >
+              <img src="static/images/pgenerator.png" class="img-rounded" style="max-width: 100%;"alt="pgenerator"> 
+              </div>
+              <div class="col-xs-6 col-md-2 img-fluid">
+                <img src="static/images/pgfilter.png" class="img-rounded"  style="max-width: 100%;"alt="pgenerator" > 
+                </div>
+              </div>
+            </div>
           </div>
           <div id="section4">
             <h1>Storing Login credentials</h1>
             <p>
               We use AES-256 encryption to keep your sensitive information, such as passwords, safe and secure. Our encryption algorithm is virtually impossible to crack, ensuring that your data is protected even if our database is accessed by an unauthorized user. With our fast and efficient encryption and decryption process, you can trust that your passwords are in good hands. Protect your information and try our password manager today.
             </p>
-          </div>      
+          
+            <div class="row">
+              
+                <div class="col-xs-7 col-md-2 img-fluid" >
+                <img src="static/images/credential.png" class="img-rounded" style="max-width: 100%;"alt="pgenerator"> 
+                </div>
+                <div class="col-xs-12 col-md-5 img-fluid align-middle">
+                <img src="static/images/credential2.png" class="img-rounded"  style="max-width: 100%;"alt="pgenerator" > 
+                </div>
+              </div>
+           
+          </div>   
         </div>
       </div>
-   
+    
 <div>
 {% include "footer.html" %}
 
