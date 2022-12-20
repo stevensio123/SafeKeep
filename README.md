@@ -11,7 +11,7 @@ A simple and secure password manager built using the Flask web framework and Fla
 
 ## Requirements
 
-- Python 3.8 or higher
+- Python 3.10 or higher
 - Flask
 - Flask-WTForms
 - Flask-Login
