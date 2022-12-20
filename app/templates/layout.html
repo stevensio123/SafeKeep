@@ -24,7 +24,8 @@
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
-                        <li><a href="/"><img id="navlogo" src="/static/logo/logo_locked_white.png" width="30" height="30" onmouseover="newlogo()" onmouseout="oldlogo()"alt=""></a></li>
+                        <li class="hidden-xs"><a href="/"><img id="navlogo" src="/static/logo/logo_locked_white.png" width="30" height="30" onmouseover="newlogo()" onmouseout="oldlogo()"alt=""></a></li>
+                        <li class="hidden-sm hidden-md hidden-lg"><a href="/">Home</a></li>
                         <li><a href="{{ url_for('vault.view_credentials') }}">Vault</a></li>
                         <li><a href="{{ url_for('pgenerator.pgenerate') }}">Generate Password</a></li>
                     </ul>
