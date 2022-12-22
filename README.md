@@ -62,6 +62,15 @@ The project is coded using blueprints, app factory pattern, dual configuration p
    |    |    |-- __init__.py 
    |    |
    |    |
+   |    |-- pgenerator/                     # Handles the generation of the password
+   |    |    |-- __init__.py          
+   |    |    |--views.py
+   |    |
+   |    |-- vault/ 
+   |    |    |--__init__.py
+   |    |    |--forms.py
+   |    |    |--views.py
+   |    |
    |    |-- static/
    |    |    |-- <css, JS, images>          # CSS files, Javascripts files
    |    |
@@ -81,6 +90,8 @@ The project is coded using blueprints, app factory pattern, dual configuration p
    |    |    |    |-- 500.html              # 500 page
    |    |    |    |-- 404-page.html         # 404 page
    |    |    |
+   |    |    |-- pgenerator/
+   |    |    |    |--pgenerator.html        # Password generator page
    |    |    |
    |    |    |-- layout.html                # App Layout
    |    |    |-- footer.html                # App Footer
