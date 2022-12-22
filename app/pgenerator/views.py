@@ -35,7 +35,7 @@ def pgenerate():
 
     
     password = pgen(int(13),asciiFilter,lowerFilter,upperFilter,puncFilter,digitsFilter)
-    return render_template('pgenerator.html',password=password)  #set 13 as the default length of generated password
+    return render_template('pgenerator/pgenerator.html',password=password)  #set 13 as the default length of generated password
 
 
 
