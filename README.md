@@ -1,5 +1,5 @@
 # SafeKeep
-#### Video Demo:  <URL HERE>
+#### Video Demo:  https://www.youtube.com/watch?v=DSxv5b84eWo
 #### Description: A simple and secure password manager built using the Flask web framework and Flask extensions.
 
 ## Features
