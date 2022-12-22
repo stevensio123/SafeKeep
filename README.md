@@ -29,6 +29,7 @@ git clone https://github.com/username/password-manager
 ```
 pip install -r requirements.txt
 ```
+2. Create a `.env` file and set ```SECRET_KEY = <a hard to guess secrete key>```
 
 ## Usage
 To start the password manager, run the following command:
