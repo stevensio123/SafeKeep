@@ -36,6 +36,71 @@ To start the password manager, run the following command:
 ```
 flask run
 ```
+By default, the app redirects guest users to authenticate. In order to access the private pages, follow this set up:
+
+* Start the app via flask run
+* Access the registration page and create a new user:
+    * http://127.0.0.1:5000/register
+* Access the login page and authenticate
+    * http://127.0.0.1:5000/login
+
+## Code-base structure
+The project is coded using blueprints, app factory pattern, dual configuration profile (development and production) and an intuitive structure presented bellow:
+
+```
+< PROJECT ROOT >
+   |
+   |-- app/                                 # Our Application Module
+   |    |
+   |    |-- main/ 
+             |-- __init__.py
+   |    |    |-- views.py
+             |-- errors.py
+   |    |
+   |    |-- auth/                           # Handles auth routes (login and register)
+   |    |    |-- views.py                   # Define authentication routes  
+   |    |    |-- __init__.py 
+   |    |
+   |    |
+   |    |-- static/
+   |    |    |-- <css, JS, images>          # CSS files, Javascripts files
+   |    |
+   |    |-- templates/                      # Templates used to render pages
+   |    |    |-- vault/                     # vault pages
+   |    |    |    |-- credentials.html      # view saved credentials page
+   |    |    |    |-- add_credential.html   # add new credential page
+   |    |    |    |-- edit_credential.html  # Edit credential page
+   |    |    |
+   |    |    |
+   |    |    |-- auth/                      # Authentication pages
+   |    |    |    |-- login.html            # Login page
+   |    |    |    |-- register.html         # Register page
+   |    |    |    |-- logout.py             # Logout page
+   |    |    |
+   |    |    |-- errors/                    # Error Pages
+   |    |    |    |-- 500.html              # 500 page
+   |    |    |    |-- 404-page.html         # 404 page
+   |    |    |
+   |    |    |
+   |    |    |-- layout.html                # App Layout
+   |    |    |-- footer.html                # App Footer
+   |    |    |-- index.html                 # App homepage
+   |    |
+   |    |-- __init__.py                     # Initialize the app
+   |    |-- forms.py
+   |    |-- models.py
+   |    |--*.py                             # All other python files
+   |
+   |-- config.py                            # Set up the app
+   |-- requirements.txt                     # App Dependencies
+   |
+   |-- .env                                 # Inject Configuration via Environment
+   |-- safekeep.py                          # Start the app - WSGI gateway
+   |
+   |-- ************************************************************************
+```
 
 ## License
 This project is licensed under the MIT License. See LICENSE for more details.
+
+
